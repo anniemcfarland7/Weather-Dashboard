@@ -85,8 +85,18 @@ function populateCityWeather(city, citySearchList) {
             }).then(function (uvIndex) {
                 console.log(uvIndex);
 
+                var uvVal = uvIndex[0].value
                 var uvIndexDisplay = $("<button>");
-                uvIndexDisplay.addClass("btn btn-danger");
+                
+
+                if (uvVal <= 2) {
+                    console.log(uvVal)
+                    uvIndexDisplay.addClass("btn btn-success");
+                  } else if (uvVal >= 6) {
+                    uvIndexDisplay.addClass("btn btn-danger");
+                  } else {
+                    vIndexDisplay.addClass("btn btn-warning");
+                  }
 
                 $("#current-uv").text("UV Index: ");
                 $("#current-uv").append(uvIndexDisplay.text(uvIndex[0].value));
